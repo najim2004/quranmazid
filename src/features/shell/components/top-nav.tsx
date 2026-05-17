@@ -14,12 +14,11 @@ export function TopNav() {
       <div className="tablet:px-6 flex h-full w-full items-center justify-between px-4">
         <div className="flex items-center gap-2.5">
           <Link
-            href={`/${siteConfig.defaultSurah}`}
+            href="/"
             className="flex items-center gap-2.5 max-tablet:hidden"
           >
-            <Icon name="logo" size={36} className="shrink-0" />
             <div className="space-y-[2px] text-left select-none">
-              <p className="font-[family-name:var(--font-poppins)] mt-[2px] text-xl leading-none font-bold text-pure-color max-sm:text-base">
+              <p className="text-dark font-poppins mt-[2px] text-xl leading-none font-bold">
                 {siteConfig.name}
               </p>
               <p className="text-subtitle-color w-max text-[10px] tracking-tight">
@@ -27,23 +26,43 @@ export function TopNav() {
               </p>
             </div>
           </Link>
+          <Link href="/" className="tablet:hidden">
+            <p className="text-body tablet:hidden font-bold">{siteConfig.name}</p>
+          </Link>
         </div>
 
         <div className="tablet:gap-6 flex items-center gap-4">
-          <button type="button" aria-label="Search" className="icon-btn text-primary">
-            <Icon name="search" size={21} />
+          <button
+            type="button"
+            className="icon-btn text-primary"
+            aria-label="Search"
+          >
+            <Icon name="search" className="size-[18px]" />
           </button>
-          <button type="button" aria-label="Toggle theme" className="icon-btn">
-            <Icon name="theme" />
+          <button
+            type="button"
+            className="icon-btn flex items-center gap-1 text-primary outline-none"
+            aria-label="Theme"
+          >
+            <Icon name="theme" className="size-[18px]" />
+          </button>
+          <button
+            type="button"
+            className="icon-btn desktop:hidden text-primary"
+            aria-label="Settings"
+          >
+            <Icon name="settings" className="size-[18px]" />
           </button>
           <a
             href={siteConfig.supportUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-primary-fg max-laptop:hidden flex h-[38px] min-w-[136px] items-center justify-center gap-2 rounded-full px-2 select-none"
+            className="bg-primary text-primary-fg flex h-[38px] min-w-[136px] items-center justify-center gap-2 rounded-full px-2 select-none max-laptop:hidden"
           >
-            <span className="text-base font-medium">Support Us</span>
-            <Icon name="support-heart" size={19} />
+            <span className="text-primary-fg text-base font-medium">
+              Support Us
+            </span>
+            <Icon name="support-heart" className="size-[18px]" />
           </a>
         </div>
       </div>

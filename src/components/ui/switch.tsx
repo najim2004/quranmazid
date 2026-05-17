@@ -23,20 +23,20 @@ export function Switch({
       role="switch"
       id={id}
       aria-checked={checked}
+      aria-label="Toggle switch"
       disabled={disabled}
       onClick={() => onCheckedChange?.(!checked)}
       className={cn(
-        "relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors",
+        "border-border-color bg-secondary-bg relative flex h-6 w-[44px] shrink-0 cursor-pointer items-center rounded-full border px-[3px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
-        checked ? "bg-primary" : "bg-secondary-bg border-border-color",
         disabled && "cursor-not-allowed opacity-50",
         className,
       )}
     >
       <span
         className={cn(
-          "pointer-events-none block size-5 rounded-full bg-white shadow-sm transition-transform",
-          checked ? "translate-x-5" : "translate-x-0.5",
+          "absolute size-[18px] rounded-full transition-all duration-200 ease-in-out",
+          checked ? "translate-x-5 bg-primary" : "translate-x-0 bg-primary-20",
         )}
       />
     </button>

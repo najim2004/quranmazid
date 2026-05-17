@@ -11,37 +11,33 @@ type AyahCardProps = {
   translationSize: number;
 };
 
+function AyahIconButton({
+  label,
+  icon,
+  size,
+}: {
+  label: string;
+  icon: "play" | "tafsir" | "bookmark" | "more";
+  size?: number;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      className="ayah-icon-btn"
+    >
+      <Icon name={icon} size={size} className="text-icon-color" />
+    </button>
+  );
+}
+
 function AyahActions() {
   return (
-    <div className="max-tablet:hidden flex flex-col items-center gap-2 pt-1">
-      <button
-        type="button"
-        aria-label="Play ayah"
-        className="icon-btn bg-transparent hover:bg-primary-7"
-      >
-        <Icon name="play" size={18} />
-      </button>
-      <button
-        type="button"
-        aria-label="Tafsir"
-        className="icon-btn bg-transparent hover:bg-primary-7"
-      >
-        <Icon name="tafsir" size={22} />
-      </button>
-      <button
-        type="button"
-        aria-label="Bookmark ayah"
-        className="icon-btn bg-transparent hover:bg-primary-7"
-      >
-        <Icon name="bookmark" size={16} />
-      </button>
-      <button
-        type="button"
-        aria-label="More actions"
-        className="icon-btn bg-transparent hover:bg-primary-7"
-      >
-        <Icon name="more" />
-      </button>
+    <div className="max-tablet:hidden flex flex-col items-center gap-2">
+      <AyahIconButton label="Play ayah" icon="play" size={18} />
+      <AyahIconButton label="Tafsir" icon="tafsir" size={22} />
+      <AyahIconButton label="Bookmark ayah" icon="bookmark" size={16} />
+      <AyahIconButton label="More actions" icon="more" />
     </div>
   );
 }
@@ -56,16 +52,23 @@ export function AyahCard({ surah, ayah, arabicSize, translationSize }: AyahCardP
         <p className="text-title text-primary tablet:pl-2 tablet:text-body font-semibold">
           {surah.number}:{ayah.numberInSurah}
         </p>
+        <div className="flex items-center gap-3">
+          <div className="tablet:hidden">
+            <button type="button" aria-label="More actions" className="ayah-icon-btn w-full">
+              <Icon name="more" className="text-icon-color size-5" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="tablet:grid-cols-[auto_1fr] grid grid-cols-1 gap-7 pt-3">
         <AyahActions />
 
-        <div className="flex min-w-0 flex-col gap-4 tablet:flex-row-reverse tablet:items-start tablet:justify-between tablet:gap-10">
+        <div>
           <p
             dir="rtl"
             lang="ar"
-            className="font-kfgq text-right text-pure-color tablet:flex-1"
+            className="font-arabic mb-4 text-right text-pure-color"
             style={{
               fontSize: `${arabicSize}px`,
               lineHeight: `${arabicSize * 2}px`,
@@ -74,13 +77,13 @@ export function AyahCard({ surah, ayah, arabicSize, translationSize }: AyahCardP
             {ayah.arabic}
           </p>
 
-          <div className="space-y-4 tablet:max-w-md tablet:shrink-0 tablet:pt-1">
+          <div className="space-y-4">
             <div className="space-y-2">
-              <p className="text-subtitle text-subtitle-color uppercase tracking-wide">
+              <p className="text-subtitle text-subtitle-color uppercase">
                 {siteConfig.translationLabel}
               </p>
               <p
-                className="text-body text-pure-color leading-relaxed"
+                className="text-body text-pure-color"
                 style={{ fontSize: `${translationSize}px` }}
               >
                 {ayah.translation}

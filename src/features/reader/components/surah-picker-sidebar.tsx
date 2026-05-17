@@ -57,7 +57,7 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
           </div>
 
           <div className="mb-4 ps-gap-start pe-gap-end">
-            <div className="border-border-color bg-primary-bg flex h-10 items-center gap-2 rounded-md border px-3">
+            <div className="border-border-color bg-secondary-bg flex h-10 items-center gap-3 rounded-full border px-3 text-base">
               <Icon name="search-muted" size={21} className="text-subtitle-color shrink-0" />
               <input
                 type="text"
@@ -80,7 +80,7 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
                   <Link href={href}>
                     <div
                       className={cn(
-                        "group/card border-border-color hover:bg-primary-7 tablet:gap-4 flex h-[66px] w-full min-w-[200px] cursor-pointer items-center justify-between gap-5 rounded-md border px-4 select-none transition-colors",
+                        "group/card border-border-color hover:bg-primary-7 tablet:gap-4 flex h-[76px] w-full min-w-[200px] cursor-pointer items-center justify-between gap-5 rounded-md border px-4 select-none transition-colors",
                         active && "active bg-primary-7",
                       )}
                     >
@@ -99,7 +99,7 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
                           {surah.number}
                         </span>
                       </div>
-                      <div className="grow min-w-0 text-start">
+                      <div className="grow text-start laptop:w-full desktop:w-1/2 desktop:shrink-0 w-1/2">
                         <p
                           className={cn(
                             "text-title line-clamp-1 pr-3 font-medium text-pure-color break-all",
@@ -114,7 +114,7 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
                       </div>
                       <span
                         dir="rtl"
-                        className="font-calligraphy text-heading-5 text-subtitle-color shrink-0 text-right [unicode-bidi:isolate] max-laptop:hidden desktop:block"
+                        className="font-calligraphy text-heading-5 text-subtitle-color text-right [unicode-bidi:isolate] laptop:hidden desktop:block block"
                       >
                         {surah.name.replace(/^سُورَةُ\s*/, "")}
                       </span>

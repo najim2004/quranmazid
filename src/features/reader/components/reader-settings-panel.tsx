@@ -37,7 +37,8 @@ function SettingsSelect({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="border-border-color bg-secondary-bg text-body text-pure-color h-11 w-full appearance-none rounded-md border px-3 pr-10 outline-none"
+          className="sr-only"
+          aria-label={label}
         >
           {options.map((option) => (
             <option key={option} value={option}>
@@ -45,11 +46,17 @@ function SettingsSelect({
             </option>
           ))}
         </select>
-        <Icon
-          name="chevron-down"
-          size={14}
-          className="text-icon-color pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
-        />
+        <button
+          type="button"
+          onClick={() => {
+            const index = options.indexOf(value);
+            onChange(options[(index + 1) % options.length]);
+          }}
+          className="bg-secondary-bg flex min-h-[40px] w-full cursor-pointer items-center justify-between gap-2 rounded-sm px-4 py-2.5 text-base capitalize"
+        >
+          <span className="min-w-0 flex-1 truncate text-left">{value}</span>
+          <Icon name="chevron-down" size={14} className="text-icon-color shrink-0 -rotate-90" />
+        </button>
       </div>
     </div>
   );
@@ -203,10 +210,10 @@ export function ReaderSettingsPanel({
                   <p className="text-title font-medium">Arabic Font Face</p>
                   <button
                     type="button"
-                    className="border-border-color bg-secondary-bg flex h-11 w-full items-center justify-between rounded-md border px-3 text-body"
+                    className="bg-secondary-bg flex min-h-[40px] w-full cursor-pointer items-center justify-between gap-2 rounded-sm px-4 py-2.5 text-base capitalize"
                   >
-                    <span>KFGQ</span>
-                    <Icon name="chevron-down" size={14} className="-rotate-90 text-icon-color" />
+                    <span className="min-w-0 flex-1 truncate text-left">KFGQ</span>
+                    <Icon name="chevron-down" size={14} className="text-icon-color shrink-0 -rotate-90" />
                   </button>
                 </div>
               </CollapsibleContent>

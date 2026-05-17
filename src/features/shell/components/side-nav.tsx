@@ -47,12 +47,18 @@ export function SideNav() {
               <Link
                 key={item.label}
                 href={item.href}
-                aria-label={item.label}
                 className={cn(index === 0 && "max-laptop:hidden")}
               >
-                <span className={cn("nav-icon-btn", active && "nav-icon-btn-active")}>
-                  <Icon name={item.icon} />
-                </span>
+                <button
+                  type="button"
+                  aria-label={item.label}
+                  className={cn("nav-icon-btn", active && "active nav-icon-btn-active")}
+                >
+                  <Icon
+                    name={item.icon}
+                    className={cn(item.icon === "read-quran" && "size-[26px]")}
+                  />
+                </button>
               </Link>
             );
           })}

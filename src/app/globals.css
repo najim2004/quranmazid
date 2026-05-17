@@ -333,8 +333,58 @@
   }
 
   @media (max-width: 63.999rem) {
+    :root {
+      --bottom-bar-size: 60px;
+    }
+
     .reader-layout-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .text-dark {
+    color: hsl(var(--color-pure));
+  }
+
+  .font-poppins {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-arabic {
+    font-family: var(--font-arabic);
+  }
+
+  .bg-primary-20 {
+    background-color: hsl(var(--color-primary-base) / 0.2);
+  }
+
+  .image-in-dark img {
+    opacity: 1;
+  }
+
+  .dark .image-in-dark img {
+    filter: brightness(0.85);
+  }
+
+  .ayah-icon-btn {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: hsl(var(--color-icon));
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  .ayah-icon-btn:hover {
+    background-color: hsl(var(--color-primary-base) / 0.07);
+  }
+
+  .ayah-icon-btn:active {
+    transform: scale(0.9);
   }
 }
