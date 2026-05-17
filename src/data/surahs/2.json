@@ -1,0 +1,25 @@
+{
+  "number": 2,
+  "name": "سُورَةُ البَقَرَةِ",
+  "englishName": "Al-Baqarah",
+  "englishNameTranslation": "The Cow",
+  "numberOfAyahs": 286,
+  "revelationType": "Medinan",
+  "ayahs": [
+    {
+      "numberInSurah": 1,
+      "arabic": "الٓمٓ ١",
+      "translation": "Alif, Lam, Meem."
+    },
+    {
+      "numberInSurah": 2,
+      "arabic": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ٢",
+      "translation": "This is the Book about which there is no doubt, a guidance for those conscious of Allah -"
+    },
+    {
+      "numberInSurah": 3,
+      "arabic": "الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ ٣",
+      "translation": "Who believe in the unseen, establish prayer, and spend out of what We have provided for them,"
+    }
+  ]
+}

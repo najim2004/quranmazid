@@ -1,26 +1,340 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-kfgq), var(--font-amiri), "Amiri Quran", serif;
+
+  --breakpoint-tablet: 40rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 90rem;
+
+  --color-background: hsl(var(--color-primary-background));
+  --color-foreground: hsl(var(--color-pure));
+  --color-primary: hsl(var(--color-primary-base));
+  --color-primary-foreground: hsl(var(--color-primary-foreground));
+  --color-primary-7: hsl(var(--color-primary-base) / 0.07);
+  --color-primary-10: hsl(var(--color-primary-base) / 0.1);
+  --color-muted: hsl(var(--color-secondary-background));
+  --color-muted-foreground: hsl(var(--color-subtitle));
+  --color-border: hsl(var(--color-border));
+  --color-card: hsl(var(--color-card-background));
+  --color-accent: hsl(var(--color-primary-base) / 0.07);
+  --color-accent-foreground: hsl(var(--color-pure));
+  --color-ring: hsl(var(--color-primary-base));
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@custom-variant tablet (@media (min-width: 40rem));
+@custom-variant laptop (@media (min-width: 64rem));
+@custom-variant desktop (@media (min-width: 90rem));
+@custom-variant max-tablet (@media (max-width: 39.999rem));
+@custom-variant max-laptop (@media (max-width: 63.999rem));
+@custom-variant max-desktop (@media (max-width: 89.999rem));
+
+:root {
+  --top-nav-size: 60px;
+  --bottom-bar-size: 0px;
+  --side-nav-size: 60px;
+  --gap-start: 1.625rem;
+  --gap-end: 1.625rem;
+  --left-sidebar-size: 300px;
+  --right-sidebar-size: 334px;
+  --full-screen: 100dvh;
+  --fs: 100dvh;
+
+  --color-primary-base: 112 39% 36%;
+  --color-primary: 112 39% 36%;
+  --color-primary-background: 0 0% 100%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary-background: 0 0% 96%;
+  --color-card-background: 0 0% 100%;
+  --color-card-shade: 180 4% 97%;
+  --color-subtitle: 160 7% 40%;
+  --color-subtitle-secondary: 154 9% 35%;
+  --color-pure: 100 2% 21%;
+  --color-icon: 160 7% 40%;
+  --color-border: 0 0% 95%;
+
+  --font-size-heading-5: 1.375rem;
+  --font-size-heading-6: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-title: 0.9375rem;
+  --font-size-subtitle: 0.8125rem;
+
+  --arabic-font-size: 30px;
+  --arabic-line-height: 60px;
+  --translation-font-size: 17px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans antialiased;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-[hsl(var(--color-primary-background))] text-[hsl(var(--color-pure))];
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-height: 2.75rem;
+    background-color: hsl(var(--color-primary-base) / 0.2);
+    border-radius: 9999rem;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--color-primary-base) / 0.9);
+  }
+
+  body::-webkit-scrollbar {
+    width: 0.45rem;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--color-primary-base));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .bg-primary-bg {
+    background-color: hsl(var(--color-primary-background));
+  }
+
+  .bg-secondary-bg {
+    background-color: hsl(var(--color-secondary-background));
+  }
+
+  .bg-primary-7 {
+    background-color: hsl(var(--color-primary-base) / 0.07);
+  }
+
+  .bg-primary-10 {
+    background-color: hsl(var(--color-primary-base) / 0.1);
+  }
+
+  .border-border-color {
+    border-color: hsl(var(--color-border));
+  }
+
+  .border-primary-7 {
+    border-color: hsl(var(--color-primary-base) / 0.07);
+  }
+
+  .text-pure-color {
+    color: hsl(var(--color-pure));
+  }
+
+  .text-subtitle-color {
+    color: hsl(var(--color-subtitle));
+  }
+
+  .text-subtitle-color-secondary {
+    color: hsl(var(--color-subtitle-secondary));
+  }
+
+  .text-icon-color {
+    color: hsl(var(--color-icon));
+  }
+
+  .text-primary-fg {
+    color: hsl(var(--color-primary-foreground));
+  }
+
+  .text-heading-5 {
+    font-size: var(--font-size-heading-5);
+    line-height: 1.3;
+  }
+
+  .text-heading-6 {
+    font-size: var(--font-size-heading-6);
+    line-height: 1.35;
+  }
+
+  .text-title {
+    font-size: var(--font-size-title);
+    line-height: 1.4;
+  }
+
+  .text-body {
+    font-size: var(--font-size-body);
+    line-height: 1.5;
+  }
+
+  .text-subtitle {
+    font-size: var(--font-size-subtitle);
+    line-height: 1.45;
+  }
+
+  .font-kfgq {
+    font-family: var(--font-arabic);
+  }
+
+  .font-calligraphy {
+    font-family: var(--font-arabic);
+    line-height: 1.2;
+  }
+
+  .reader-main {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .icon-btn {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: hsl(var(--color-primary-base) / 0.07);
+    color: hsl(var(--color-icon));
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  .icon-btn:active {
+    transform: scale(0.9);
+  }
+
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-icon-btn {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.125rem;
+    border: 2px solid transparent;
+    color: hsl(var(--color-icon));
+    transition: all 0.3s;
+  }
+
+  .nav-icon-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-icon-btn-active {
+    border-color: hsl(var(--color-primary-base));
+    background-color: hsl(var(--color-primary-base) / 0.07);
+  }
+
+  .nav-icon-btn-active svg {
+    color: hsl(var(--color-primary-base));
+  }
+
+  .fill-primary {
+    fill: hsl(var(--color-primary-base));
+  }
+
+  .h-top-nav {
+    height: var(--top-nav-size);
+  }
+
+  .mt-top-nav {
+    margin-top: var(--top-nav-size);
+  }
+
+  .mb-bottom-bar {
+    margin-bottom: var(--bottom-bar-size);
+  }
+
+  .min-h-fs {
+    min-height: var(--fs);
+  }
+
+  .w-side-nav {
+    width: var(--side-nav-size);
+  }
+
+  .h-side-nav {
+    height: var(--side-nav-size);
+  }
+
+  .px-content {
+    padding-inline: var(--padding-x);
+  }
+
+  .ms-gap-start {
+    margin-inline-start: var(--gap-start);
+  }
+
+  .me-gap-end {
+    margin-inline-end: var(--gap-end);
+  }
+
+  .ps-gap-start {
+    padding-inline-start: var(--gap-start);
+  }
+
+  .pe-gap-end {
+    padding-inline-end: var(--gap-end);
+  }
+
+  .px-gap {
+    padding-inline: var(--gap-start) var(--gap-end);
+  }
+
+  .sticky-panel {
+    position: sticky;
+    top: var(--top-nav-size);
+    z-index: 0;
+    isolation: isolate;
+    height: calc(var(--fs) - var(--top-nav-size) - var(--bottom-bar-size));
+    overflow-x: hidden;
+  }
+
+  .reader-layout-grid {
+    display: grid;
+    min-height: var(--fs);
+    grid-template-columns: var(--left-sidebar-size) minmax(0, 1fr) var(--right-sidebar-size);
+  }
+
+  @media (min-width: 64rem) {
+    .laptop\:pl-side-nav {
+      padding-left: var(--side-nav-size);
+    }
+
+    .laptop\:top-nav-w {
+      width: calc(100% - var(--side-nav-size));
+    }
+
+    .laptop\:h-side-nav-inner {
+      height: calc(100% - 110px);
+    }
+  }
+
+  @media (max-width: 89.999rem) {
+    .reader-layout-grid {
+      grid-template-columns: var(--left-sidebar-size) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 63.999rem) {
+    .reader-layout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
