@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Icon } from "@/components/icons/icon";
+import { Icon } from "@/components/icons";
 import {
   Collapsible,
   CollapsibleContent,
@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
-import { siteConfig } from "@/config/site.config";
+import { siteConfig } from "@/lib/site.config";
 import { cn } from "@/lib/utils";
 
 type ReaderSettingsPanelProps = {

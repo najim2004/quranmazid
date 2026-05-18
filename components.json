@@ -10,16 +10,13 @@
     "cssVariables": true,
     "prefix": ""
   },
-  "iconLibrary": "lucide",
+  "iconLibrary": "none",
   "rtl": false,
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
     "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks",
-    "features": "@/features",
-    "config": "@/config"
+    "lib": "@/lib"
   },
   "menuColor": "default",
   "menuAccent": "subtle",

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Icon } from "@/components/icons/icon";
-import { AyahCard } from "@/features/reader/components/ayah-card";
-import type { SurahDetail } from "@/features/reader/types";
-import { siteConfig } from "@/config/site.config";
+import { AyahCard } from "@/components/ayah-card";
+import type { SurahDetail } from "@/lib/types";
+import { Icon } from "@/components/icons";
+import { siteConfig } from "@/lib/site.config";
 import { cn } from "@/lib/utils";
 
 type AyahListProps = {

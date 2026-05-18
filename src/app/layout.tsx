@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Amiri, Inter, Poppins } from "next/font/google";
-import { siteConfig } from "@/config/site.config";
+import { siteConfig } from "@/lib/site.config";
 import "./globals.css";
-import { SideNav } from "@/features/shell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,11 +51,7 @@ export default function RootLayout({
       }
       suppressHydrationWarning
     >
-      <body
-        className="relative min-h-full font-sans flex"
-        suppressHydrationWarning
-      >
-        <SideNav />
+      <body className="min-h-full font-sans" suppressHydrationWarning>
         {children}
       </body>
     </html>

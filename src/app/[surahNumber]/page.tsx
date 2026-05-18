@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { AppShell } from "@/features/shell";
-import { ReaderView } from "@/features/reader/components/reader-view";
-import { SurahPickerSidebar } from "@/features/reader/components/surah-picker-sidebar";
-import {
-  getAllSurahs,
-  getSurahByNumber,
-} from "@/lib/repositories/surah.repository";
+import { ReaderView } from "@/components/reader-view";
+import { MAX_SURAH_NUMBER } from "@/lib/constants";
+import { getAllSurahs, getSurahByNumber } from "@/services/surah.service";
 
 type SurahPageProps = {
   params: Promise<{ surahNumber: string }>;
@@ -38,23 +34,18 @@ export default async function SurahPage({ params }: SurahPageProps) {
   const { surahNumber } = await params;
   const number = Number(surahNumber);
 
-  if (!Number.isInteger(number) || number < 1 || number > 114) {
+  if (!Number.isInteger(number) || number < 1 || number > MAX_SURAH_NUMBER) {
     notFound();
   }
 
   const [surah, surahs] = await Promise.all([
     getSurahByNumber(number),
-    getAllSurahs(),
+    Promise.resolve(getAllSurahs()),
   ]);
 
   if (!surah) {
     notFound();
   }
 
-  return (
-    <AppShell>
-      <SurahPickerSidebar surahs={surahs} />
-      <ReaderView surah={surah} />
-    </AppShell>
-  );
+  return <ReaderView surah={surah} surahs={surahs} />;
 }

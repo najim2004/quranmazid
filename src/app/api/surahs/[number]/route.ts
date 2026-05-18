@@ -1,19 +1,21 @@
 import { NextResponse } from "next/server";
-import { getSurahByNumber } from "@/lib/repositories/surah.repository";
+import { MAX_SURAH_NUMBER } from "@/lib/constants";
+import { getSurahByNumber } from "@/services/surah.service";
 
 type RouteContext = {
   params: Promise<{ number: string }>;
 };
 
-export async function GET(_request: Request, context: RouteContext) {
-  const { number } = await context.params;
-  const surahNumber = Number(number);
+export async function GET(_request: Request, { params }: RouteContext) {
+  const { number: numberParam } = await params;
+  const number = Number(numberParam);
 
-  if (!Number.isInteger(surahNumber) || surahNumber < 1 || surahNumber > 114) {
+  if (!Number.isInteger(number) || number < 1 || number > MAX_SURAH_NUMBER) {
     return NextResponse.json({ error: "Invalid surah number" }, { status: 400 });
   }
 
-  const surah = await getSurahByNumber(surahNumber);
+  const surah = await getSurahByNumber(number);
+
   if (!surah) {
     return NextResponse.json({ error: "Surah not found" }, { status: 404 });
   }

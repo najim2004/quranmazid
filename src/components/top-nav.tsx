@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Icon } from "@/components/icons/icon";
-import { siteConfig } from "@/config/site.config";
+import { siteConfig } from "@/lib/site.config";
+import { Icon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 export function TopNav() {
@@ -37,7 +37,7 @@ export function TopNav() {
             className="icon-btn text-primary"
             aria-label="Search"
           >
-            <Icon name="search" className="size-[18px]" />
+            <Icon name="search" className="size-[18px] text-icon-color" />
           </button>
           <button
             type="button"
@@ -51,7 +51,7 @@ export function TopNav() {
             className="icon-btn desktop:hidden text-primary"
             aria-label="Settings"
           >
-            <Icon name="settings" className="size-[18px]" />
+            <Icon name="settings" className="size-[18px] text-icon-color" />
           </button>
           <a
             href={siteConfig.supportUrl}
@@ -62,7 +62,7 @@ export function TopNav() {
             <span className="text-primary-fg text-base font-medium">
               Support Us
             </span>
-            <Icon name="support-heart" className="size-[18px]" />
+            <Icon name="support-heart" className="size-[18px] text-icon-color" />
           </a>
         </div>
       </div>

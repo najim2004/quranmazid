@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Icon } from "@/components/icons/icon";
-import type { SurahSummary } from "@/features/reader/types";
+import type { SurahSummary } from "@/lib/types";
+import { Icon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
 type SurahPickerSidebarProps = {
@@ -30,7 +30,7 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
   });
 
   return (
-    <aside className="max-laptop:hidden sticky-panel">
+    <aside className="w-full max-w-[333px] sticky-panel">
       <div className="border-border-color flex h-full w-full border-e">
         <div className="flex h-full w-full flex-col overflow-y-auto pt-6">
           <div className="border-secondary-bg bg-secondary-bg relative isolate flex min-h-10 items-center rounded-full border-4 ms-gap-start me-gap-end mb-4">

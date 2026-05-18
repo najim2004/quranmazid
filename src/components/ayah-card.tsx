@@ -1,8 +1,8 @@
 "use client";
 
-import { Icon } from "@/components/icons/icon";
-import { siteConfig } from "@/config/site.config";
-import type { Ayah, SurahDetail } from "@/features/reader/types";
+import type { Ayah, SurahDetail } from "@/lib/types";
+import { siteConfig } from "@/lib/site.config";
+import { Icon } from "@/components/icons";
 
 type AyahCardProps = {
   surah: SurahDetail;

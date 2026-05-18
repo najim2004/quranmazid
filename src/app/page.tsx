@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { siteConfig } from "@/config/site.config";
+import { DEFAULT_SURAH_NUMBER } from "@/lib/constants";
 
 export default function HomePage() {
-  redirect(`/${siteConfig.defaultSurah}`);
+  redirect(`/${DEFAULT_SURAH_NUMBER}`);
 }

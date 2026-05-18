@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { SurahDetail } from "@/features/reader/types";
+import type { SurahDetail } from "@/lib/types";
 
 type SurahHeaderProps = {
   surah: SurahDetail;

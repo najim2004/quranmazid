@@ -1,16 +1,19 @@
 import surahsList from "@/data/surahs-list.json";
-import type { SurahDetail, SurahSummary } from "@/features/reader/types";
+import type { SurahDetail, SurahSummary } from "@/lib/types";
 
 export function getAllSurahs(): SurahSummary[] {
   return surahsList as SurahSummary[];
 }
 
-export async function getSurahByNumber(number: number): Promise<SurahDetail | null> {
+export async function getSurahByNumber(
+  number: number,
+): Promise<SurahDetail | null> {
   const summary = getAllSurahs().find((s) => s.number === number);
   if (!summary) return null;
 
   try {
-    const detail = (await import(`@/data/surahs/${number}.json`)).default as SurahDetail;
+    const detail = (await import(`@/data/surahs/${number}.json`))
+      .default as SurahDetail;
     return detail;
   } catch {
     return {

@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-import { getAllSurahs } from "@/lib/repositories/surah.repository";
+import { getAllSurahs } from "@/services/surah.service";
 
 export async function GET() {
-  return NextResponse.json(getAllSurahs());
+  return Response.json(getAllSurahs());
 }
