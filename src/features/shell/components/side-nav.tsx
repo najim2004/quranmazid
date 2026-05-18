@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Icon } from "@/components/icons/icon";
 import { siteConfig } from "@/config/site.config";
 import { cn } from "@/lib/utils";
+import logo from "../../../../public/assets/icons/logo.svg";
 
 const navLinks = [
   { href: "/", label: "Home", icon: "home" as const },
@@ -23,20 +24,15 @@ export function SideNav() {
   const surahActive = /^\/\d+/.test(pathname);
 
   return (
-    <nav
-      className={cn(
-        "fixed isolate z-3 transform-gpu ease-linear bg-secondary-bg",
-        "max-laptop:bottom-0 max-laptop:h-side-nav max-laptop:w-full",
-        "laptop:top-0 laptop:left-0 laptop:h-full laptop:w-side-nav",
-      )}
-    >
+    <nav className={"sticky top-0 h-screen"}>
       <div className="flex h-full w-full max-laptop:items-center max-laptop:justify-center laptop:flex-col">
         <Link
           href="/"
           aria-label="Home"
           className="max-laptop:hidden laptop:py-3 flex justify-center"
         >
-          <Icon name="logo" size={36} />
+          {/* <Icon name="logo" size={36} /> */}
+          <img src={logo} className="size-[36px]" alt="Logo" />
         </Link>
 
         <div className="tablet:gap-8 laptop:h-side-nav-inner laptop:flex-col laptop:justify-center laptop:gap-6 flex items-center justify-between gap-6">
@@ -52,7 +48,7 @@ export function SideNav() {
                 <button
                   type="button"
                   aria-label={item.label}
-                  className={cn("nav-icon-btn", active && "active nav-icon-btn-active")}
+                  className={"nav-icon-btn"}
                 >
                   <Icon
                     name={item.icon}

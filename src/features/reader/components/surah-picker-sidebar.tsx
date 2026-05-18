@@ -58,7 +58,11 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
 
           <div className="mb-4 ps-gap-start pe-gap-end">
             <div className="border-border-color bg-secondary-bg flex h-10 items-center gap-3 rounded-full border px-3 text-base">
-              <Icon name="search-muted" size={21} className="text-subtitle-color shrink-0" />
+              <Icon
+                name="search-muted"
+                size={21}
+                className="text-subtitle-color shrink-0"
+              />
               <input
                 type="text"
                 value={query}
@@ -76,7 +80,10 @@ export function SurahPickerSidebar({ surahs }: SurahPickerSidebarProps) {
               const active = pathname === href;
 
               return (
-                <div key={surah.number} className="block ps-gap-start pe-gap-end pb-2">
+                <div
+                  key={surah.number}
+                  className="block ps-gap-start pe-gap-end pb-2"
+                >
                   <Link href={href}>
                     <div
                       className={cn(

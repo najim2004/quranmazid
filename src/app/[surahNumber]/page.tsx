@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/features/shell";
 import { ReaderView } from "@/features/reader/components/reader-view";
 import { SurahPickerSidebar } from "@/features/reader/components/surah-picker-sidebar";
-import { getAllSurahs, getSurahByNumber } from "@/lib/repositories/surah.repository";
+import {
+  getAllSurahs,
+  getSurahByNumber,
+} from "@/lib/repositories/surah.repository";
 
 type SurahPageProps = {
   params: Promise<{ surahNumber: string }>;

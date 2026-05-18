@@ -1,24 +1,15 @@
-import { cn } from "@/lib/utils";
-import { iconMap, type IconName } from "./icon-map";
+import { iconComponentMap, type IconName } from "./index";
 
 type IconProps = {
   name: IconName;
   className?: string;
-  size?: number;
+  size?: number | string;
 };
 
 export function Icon({ name, className, size }: IconProps) {
-  const svg = iconMap[name];
-  const sizedSvg =
-    size != null
-      ? svg.replace(/<svg/, `<svg width="${size}" height="${size}"`)
-      : svg;
+  const IconComponent = iconComponentMap[name];
+  if (!IconComponent) return null;
 
-  return (
-    <span
-      className={cn("inline-flex shrink-0 [&_svg]:block", className)}
-      aria-hidden
-      dangerouslySetInnerHTML={{ __html: sizedSvg }}
-    />
-  );
+  return <IconComponent className={className} size={size} />;
 }
+export type { IconName };
